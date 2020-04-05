@@ -13,7 +13,6 @@ namespace acgm
 
         //! Getters
         virtual float GetIntensityAt(const glm::vec3& point) const override;
-        glm::vec3 GetPosition();
         float GetRange();
         float GetQuadraticAttenuation();
         float GetLinearAttenuation();

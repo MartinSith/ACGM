@@ -11,13 +11,14 @@ float acgm::Triangle::Intersect(std::shared_ptr<acgm::Ray> ray) const
 {
     glm::vec3 edge_a, edge_b, cross_product_a, cross_product_b, s;
     float dot_product_a, f, dot_product_b, dot_product_c, t;
+    extern float epsilon;
 
     edge_a = vertex_b_ - vertex_a_;
     edge_b = vertex_c_ - vertex_a_;
     cross_product_a = glm::cross(ray->GetDirection(), edge_b);
     dot_product_a = glm::dot(edge_a, cross_product_a);
 
-    if (dot_product_a == 0)
+    if (dot_product_a > -epsilon && dot_product_a < epsilon)
     {
         return -1;
     }
@@ -26,7 +27,7 @@ float acgm::Triangle::Intersect(std::shared_ptr<acgm::Ray> ray) const
     s = ray->GetOrigin() - vertex_a_;
     dot_product_b = f * glm::dot(s, cross_product_a);
 
-    if (dot_product_b <= 0.0 || dot_product_b > 1.0)
+    if (dot_product_b <= 0.0f || dot_product_b > 1.0f)
     {
         return -1;
     }

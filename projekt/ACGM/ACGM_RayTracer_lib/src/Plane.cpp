@@ -10,10 +10,11 @@ std::optional<acgm::HitResult> acgm::Plane::Intersect(std::shared_ptr<acgm::Ray>
 {
     float dot_product;
     HitResult hitresult;
+    extern float epsilon;
 
     dot_product = glm::dot(ray->GetDirection(), plane_normal_);
 
-    if (dot_product == 0)
+    if (dot_product > -epsilon && dot_product < epsilon)
     {
         return std::nullopt;
     }

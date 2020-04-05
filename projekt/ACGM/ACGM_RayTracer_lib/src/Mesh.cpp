@@ -12,13 +12,13 @@ acgm::Mesh::Mesh(std::string file_name, glm::mat4 transform, std::string name):f
 std::optional<acgm::HitResult> acgm::Mesh::Intersect(std::shared_ptr<acgm::Ray>& ray) const
 {
     std::optional<HitResult> min_hit;
-    min_hit->distance = 10000.0f;
+    min_hit->distance = INFINITY;
     int32_t j, troj = 0;
     glm::uint point_X, point_Y, point_Z;
     float t;
 
     //! Check each triangle for intersect
- #pragma omp parallel for private(j, t, point_X, point_Y, point_Z) shared(troj)
+    #pragma omp parallel for private(j, t, point_X, point_Y, point_Z) shared(troj)
     for (j = 0; j < mesh_.faces->GetFaceCount(); j++)
     {
         point_X = mesh_.faces->GetFaces()[j].x;

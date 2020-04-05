@@ -1,7 +1,4 @@
-﻿  Mesh.cpp
-C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Mesh.cpp(22,19): warning C4018: '<': signed/unsigned mismatch
-  Plane.cpp
-  Scene.cpp
-C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(31,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(33,33): warning C4018: '<': signed/unsigned mismatch
+﻿  Scene.cpp
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(27,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(32,33): warning C4018: '<': signed/unsigned mismatch
   ACGM_RayTracer_lib.vcxproj -> C:\Users\sithm\Desktop\final_ACGM\ACGM\x64\Release\ACGM_RayTracer_lib.lib

@@ -1,5 +1,6 @@
 #include "pch.h"
 
+// Testing intensity of SunLight
 TEST(LightsTests, TestSunLightIntensity)
 {
     const auto sun = std::make_shared<acgm::SunLight>(0.8, glm::vec3(0, 0, -1), glm::vec3(1000.0f, 1000.0f, 1000.0f));
@@ -11,6 +12,7 @@ TEST(LightsTests, TestSunLightIntensity)
         ));
 }
 
+// Testing intensity of PointLight
 TEST(LightsTests, TestPointLightIntensity)
 {
     const auto point = std::make_shared<acgm::PointLight>(1, glm::vec3(0, 3, -2), 50, 0, 1);
@@ -22,6 +24,7 @@ TEST(LightsTests, TestPointLightIntensity)
         ));
 }
 
+// Testing intensity of SpotLight
 TEST(LightsTests, TestSpotLightIntensity)
 {
     const auto spot = std::make_shared<acgm::SpotLight>(1, glm::vec3(10, 10, 10), 50, 0, 1, glm::vec3(-1, -1, -1), 40, 3);

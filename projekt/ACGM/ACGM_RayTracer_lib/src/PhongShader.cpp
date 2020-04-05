@@ -21,10 +21,6 @@ cogs::Color3f acgm::PhongShader::IdentifyColor(const ShaderStruct& point) const
     direction_to_light_size = sqrt(pow(point.direction_to_light.x, 2) + pow(point.direction_to_light.y, 2) + pow(point.direction_to_light.z, 2));
     angle = glm::dot(point.normal, point.direction_to_light) / (direction_to_light_size * normal_size);
 
-    //! Specular phong
-    resultant = glm::normalize(point.direction_to_eye + point.direction_to_light);
-    specular_phong = cogs::Color3f(1.0f, 1.0f, 1.0f) * specular_ * point.light_intensity * pow(glm::dot(point.normal, resultant), shininess_);
-
     //! Ambient phong
     if (point.is_in_shadow)
     {
@@ -35,6 +31,10 @@ cogs::Color3f acgm::PhongShader::IdentifyColor(const ShaderStruct& point) const
     {
         ambient_phong = Shader::IdentifyColor(point) * (ambient_ + ((1 - ambient_) * point.light_intensity));
     }
+
+    //! Specular phong
+    resultant = glm::normalize(point.direction_to_eye + point.direction_to_light);
+    specular_phong = cogs::Color3f(1.0f, 1.0f, 1.0f) * specular_ * point.light_intensity * pow(glm::dot(point.normal, resultant), shininess_);
 
     //! Diffuse phong
     diffuse_phong = Shader::IdentifyColor(point) * diffuse_ * point.light_intensity * angle;

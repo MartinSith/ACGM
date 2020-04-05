@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include "ACGM_RayTracer_lib/SpotLight.h"
 
 //! Constructors
@@ -39,7 +41,7 @@ float acgm::SpotLight::GetIntensityAt(const glm::vec3& point) const
 
 	float light_direction_exp = pow(light_direction.x, 2) + pow(light_direction.y, 2) + pow(light_direction.z, 2);
 	float spot_direction_exp = pow(spot_direction_.x, 2) + pow(spot_direction_.y, 2) + pow(spot_direction_.z, 2);
-	float angle = glm::acos(glm::dot(spot_direction_, -light_direction) / (sqrt(spot_direction_exp) * sqrt(light_direction_exp))) * 180.0f / 3.14f;
+	float angle = glm::acos(glm::dot(spot_direction_, -light_direction) / (sqrt(spot_direction_exp) * sqrt(light_direction_exp))) * 180.0f / float(M_PI); 
 
 	float decay = 1.0f - pow((angle / cutoff_angle_), exponent_);
 	float intensity = point_intensity * decay;
