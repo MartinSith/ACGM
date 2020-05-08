@@ -1,11 +1,7 @@
-﻿  CheckerShader.cpp
-D:\Plocha\FIIT\Ing\ACGMProj\ACGM_RayTracer_lib\src\CheckerShader.cpp(15,20): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Plocha\FIIT\Ing\ACGMProj\ACGM_RayTracer_lib\src\CheckerShader.cpp(16,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  SceneImporter.cpp
-D:\Plocha\FIIT\Ing\ACGMProj\ACGM_RayTracer_lib\src\SceneImporter.cpp(80,24): warning C4267: 'argument': conversion from 'size_t' to 'glm::mat<4,4,float,0>::length_type', possible loss of data
-D:\Plocha\FIIT\Ing\ACGMProj\ACGM_RayTracer_lib\src\SceneImporter.cpp(80,39): warning C4267: 'argument': conversion from 'size_t' to 'glm::mat<4,4,float,0>::length_type', possible loss of data
-D:\Plocha\FIIT\Ing\ACGMProj\ACGM_RayTracer_lib\src\SceneImporter.cpp(80,54): warning C4267: 'argument': conversion from 'size_t' to 'glm::mat<4,4,float,0>::length_type', possible loss of data
-D:\Plocha\FIIT\Ing\ACGMProj\ACGM_RayTracer_lib\src\SceneImporter.cpp(80,69): warning C4267: 'argument': conversion from 'size_t' to 'glm::mat<4,4,float,0>::length_type', possible loss of data
-  Shader.cpp
-  Generating Code...
-  ACGM_RayTracer_lib.vcxproj -> D:\Plocha\FIIT\Ing\ACGMProj\x64\Debug\ACGM_RayTracer_lib.lib
+﻿  Scene.cpp
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(38,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(43,33): warning C4018: '<': signed/unsigned mismatch
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(51,27): warning C4101: 'ref_index': unreferenced local variable
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(50,24): warning C4101: 'reflection_hit_count': unreferenced local variable
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(52,21): warning C4101: 'reflection_hit': unreferenced local variable
+  ACGM_RayTracer_lib.vcxproj -> C:\Users\sithm\Desktop\final_ACGM\ACGM\x64\Debug\ACGM_RayTracer_lib.lib

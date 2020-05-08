@@ -5,6 +5,7 @@
 #include <ACGM_RayTracer_lib/Plane.h>
 #include <ACGM_RayTracer_lib/Sphere.h>
 #include <ACGM_RayTracer_lib/Mesh.h>
+//#include <ACGM_RayTracer_lib/Image.h>
 #include <ACGM_RayTracer_lib/Shader.h>
 #include <ACGM_RayTracer_lib/PhongShader.h>
 #include <ACGM_RayTracer_lib/CheckerShader.h>
@@ -24,6 +25,23 @@ const int acgm::SceneImporter::LIGHTTYPE_SPOT = 12;
 
 const int acgm::SceneImporter::SHADERTYPE_PHONG = 50;
 const int acgm::SceneImporter::SHADERTYPE_CHECKER = 51;
+
+std::string& ltrim(std::string& str, const std::string& chars = " ")
+{
+    str.erase(0, str.find_first_not_of(chars));
+    return str;
+}
+
+std::string& rtrim(std::string& str, const std::string& chars = " ")
+{
+    str.erase(str.find_last_not_of(chars) + 1);
+    return str;
+}
+
+std::string& trim(std::string& str, const std::string& chars = " ")
+{
+    return ltrim(rtrim(str, chars), chars);
+}
 
 bool acgm::SceneImporter::Import(const std::string &filename)
 {
@@ -108,6 +126,7 @@ std::shared_ptr<acgm::Camera> acgm::SceneImporter::ReadCamera()
     const auto fov_y_rad = ReadFloat();
     GetLine();
 
+    // #TODO Create and return instance of your camera object
     std::shared_ptr<acgm::Camera> camera = std::make_shared<acgm::Camera>(position, up_direction, forward_direction, z_near, z_far, fov_y_rad);
     return camera;
 }
@@ -124,6 +143,7 @@ std::shared_ptr<acgm::Model> acgm::SceneImporter::ReadModel()
         const auto position = ReadVec3();
         const auto normal = ReadVec3();
 
+        // model = #TODO new instance of Plane object
         model = std::make_shared<acgm::Plane>(position, normal, model_name);
     }
     if (model_type == MODELTYPE_SPHERE)
@@ -131,14 +151,16 @@ std::shared_ptr<acgm::Model> acgm::SceneImporter::ReadModel()
         const auto position = ReadVec3();
         const auto radius = ReadFloat();
 
+        // model = #TODO new instance of Sphere object
         model = std::make_shared<acgm::Sphere>(position, radius, model_name);
     }
     if (model_type == MODELTYPE_MESH)
     {
         auto file_name = GetLine();
-        std_ext::Trim(file_name);
+        trim(file_name);
         const auto transform = ReadMat4();
 
+        // model = #TODO new instance of Mesh object
         model = std::make_shared<acgm::Mesh>(file_name, transform, model_name);
     }
 
@@ -174,9 +196,13 @@ std::shared_ptr<acgm::Shader> acgm::SceneImporter::ReadShader()
         const auto ambient = ReadFloat();
         const auto diffuse = ReadFloat();
         const auto specular = ReadFloat();
+        const auto glossiness = ReadFloat(); // #UNLOCKED at Reflection seminar
+        const auto transparency = ReadFloat(); // #UNLOCKED at Transparency seminar
+        const auto refractive_index = ReadFloat(); // #UNLOCKED at Transparency seminar
         GetLine();
 
-        shader = std::make_shared<acgm::PhongShader>(color, shininess, ambient, diffuse, specular);
+        // shader = #TODO new instance of PhongShader object
+        shader = std::make_shared<acgm::PhongShader>(color, shininess, ambient, diffuse, specular, glossiness, transparency, refractive_index);
     }
     if (shader_type == SHADERTYPE_CHECKER)
     {
@@ -184,6 +210,7 @@ std::shared_ptr<acgm::Shader> acgm::SceneImporter::ReadShader()
         const auto shader0 = ReadShader();
         const auto shader1 = ReadShader();
 
+        // shader =  #TODO new instance of CheckerShader object
         shader = std::make_shared<acgm::CheckerShader>(cube_size, shader0, shader1);
     }
     return shader;
@@ -199,6 +226,7 @@ std::shared_ptr<acgm::Light> acgm::SceneImporter::ReadLight()
         const auto intensity = ReadFloat();
         const auto direction = ReadVec3();
     
+        // light = #TODO new instance of SunLight object
         light = std::make_shared<acgm::SunLight>(intensity, direction, glm::vec3(1000.0f, 1000.0f, 1000.0f));
     }
     if (light_type == LIGHTTYPE_POINT)
@@ -209,6 +237,7 @@ std::shared_ptr<acgm::Light> acgm::SceneImporter::ReadLight()
         const auto linear_attenuation = ReadFloat();
         const auto quadratic_attenuation = ReadFloat();
     
+        // light = #TODO new instance of PointLight object
         light = std::make_shared<acgm::PointLight>(intensity, position, range, linear_attenuation, quadratic_attenuation);
     }
     if (light_type == LIGHTTYPE_SPOT)
@@ -222,6 +251,7 @@ std::shared_ptr<acgm::Light> acgm::SceneImporter::ReadLight()
         const auto cutoff_angle = ReadFloat();
         const auto exponent = ReadFloat();
  
+        // light = #TODO new instance of SpotLight object
         light = std::make_shared<acgm::SpotLight>(intensity, position, range, linear_attenuation, quadratic_attenuation, spot_direction, cutoff_angle, exponent);
     }
     GetLine();
@@ -230,11 +260,20 @@ std::shared_ptr<acgm::Light> acgm::SceneImporter::ReadLight()
 
 std::shared_ptr<acgm::Scene> acgm::SceneImporter::ReadScene()
 {
+    const auto bias = ReadFloat();
+    const auto index_of_refraction = ReadFloat(); // #UNLOCKED at Transparency seminar
+    const auto enviro_up = ReadVec3();            // #UNLOCKED at Environment seminar
+    const auto enviro_seam = ReadVec3();          // #UNLOCKED at Environment seminar
+    auto enviro_image_file = GetLine();           // #UNLOCKED at Environment seminar
+    std::cout << "Pred Trim: '" << enviro_image_file << "'" << std::endl;
+    std_ext::Trim(enviro_image_file);
+    std::cout << "Po Trim: '" << enviro_image_file << "'" << std::endl;
     const auto camera = ReadCamera();
     const auto light = ReadLight();
     const auto models = ReadModels();
 
-    std::shared_ptr<acgm::Scene> scene = std::make_shared<acgm::Scene>(camera, light, models);
+    // #TODO Create your scene object and set imported camera, light and models to it
+    std::shared_ptr<acgm::Scene> scene = std::make_shared<acgm::Scene>(camera, light, models, enviro_up, enviro_seam, enviro_image_file, bias, index_of_refraction);
 
     return scene;
 }

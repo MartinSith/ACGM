@@ -10,7 +10,9 @@ acgm::Shader::Shader()
 }
 
 //! Functions
-cogs::Color3f acgm::Shader::IdentifyColor(const ShaderStruct& point) const
+acgm::ShaderReturn acgm::Shader::IdentifyColor(const ShaderStruct& point) const
 {
-	return color_;
+	ShaderReturn shader_info;
+	shader_info.color = color_;
+	return shader_info;
 }

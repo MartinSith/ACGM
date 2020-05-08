@@ -20,10 +20,20 @@ void RayTracerGadget::GenerateGui(hiro::GuiGenerator& gui)
 {
     hiro::Gadget::GenerateGui(gui);
     hiro::gui::Droplist* scene_selector_;
+    hiro::gui::Droplist* reflection_number_;
+    hiro::gui::Droplist* transparency_number_;
     hiro::gui::Button* scene_button_;
     scene_selector_ = gui.AddDroplist("Scene File")
-        ->AddItemsIndexed({ "scene0.txt", "scene1.txt", "scene2.txt" })
+        ->AddItemsIndexed({ "scene0.txt", "scene1.txt", "scene2.txt", "scene3.txt", "scene4.txt", "scene5.txt", "scene6.txt" })
         ->Set(0);
+
+    reflection_number_ = gui.AddDroplist("Reflection index")
+        ->AddItemsIndexed({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" })
+        ->Set(9);
+
+    transparency_number_ = gui.AddDroplist("Transparency index")
+        ->AddItemsIndexed({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" })
+        ->Set(9);
 
     scene_button_ = gui.AddButton("Import and Render");
     scene_button_->Subscribe([scene_selector_](const hiro::gui::Button* button) {

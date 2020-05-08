@@ -1,6 +1,7 @@
 ﻿  Generating code
-  3 of 1563 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(207): warning C4715: 'Reflection_new': not all control paths return a value
+  799 of 1804 functions (44.3%) were compiled, the rest were copied from previous compilation.
+    59 functions were new in current compilation
+    24 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   ACGM_RayTracer.vcxproj -> C:\Users\sithm\Desktop\final_ACGM\ACGM\x64\Release\ACGM_RayTracer.exe

@@ -14,7 +14,7 @@ namespace acgm
         explicit CheckerShader(float cube_size, const std::shared_ptr<Shader> shader0, const std::shared_ptr<Shader> shader1);
 
         //! Functions
-        virtual cogs::Color3f IdentifyColor(const ShaderStruct& point) const override;
+        virtual acgm::ShaderReturn IdentifyColor(const ShaderStruct& point) const override;
 
         //! Getters
         float GetCubeSize();

@@ -2,18 +2,24 @@
 
 //! Constructors
 acgm::PhongShader::PhongShader(cogs::Color3f color, float shininess,
-    float ambient, float diffuse, float specular): Shader(color)
+    float ambient, float diffuse, float specular, float glossiness, 
+    float transparency, float refractive_index): Shader(color)
 {
     this->shininess_ = shininess;
     this->ambient_ = ambient;
     this->diffuse_ = diffuse;
     this->specular_ = specular;
+    this->glossiness_ = glossiness;
+    this->transparency_ = transparency;
+    this->refractive_index_ = refractive_index;
 }
 
 //! Functions
-cogs::Color3f acgm::PhongShader::IdentifyColor(const ShaderStruct& point) const
+acgm::ShaderReturn acgm::PhongShader::IdentifyColor(const ShaderStruct& point) const
 {
-    cogs::Color3f specular_phong, ambient_phong, diffuse_phong;
+    ShaderReturn shader_info;
+    cogs::Color3f specular_phong;
+    float diffuse_phong;
     glm::vec3 resultant;
     float normal_size, direction_to_light_size, angle;
 
@@ -24,12 +30,11 @@ cogs::Color3f acgm::PhongShader::IdentifyColor(const ShaderStruct& point) const
     //! Ambient phong
     if (point.is_in_shadow)
     {
-        ambient_phong = Shader::IdentifyColor(point) * ambient_ * point.light_intensity * angle;
-        return ambient_phong;
-    }
-    else
-    {
-        ambient_phong = Shader::IdentifyColor(point) * (ambient_ + ((1 - ambient_) * point.light_intensity));
+        shader_info.color = Shader::IdentifyColor(point).color * ambient_;
+        shader_info.glossiness = glossiness_;
+        shader_info.transparency = transparency_;
+        shader_info.refractive_index = refractive_index_;
+        return shader_info;
     }
 
     //! Specular phong
@@ -37,9 +42,13 @@ cogs::Color3f acgm::PhongShader::IdentifyColor(const ShaderStruct& point) const
     specular_phong = cogs::Color3f(1.0f, 1.0f, 1.0f) * specular_ * point.light_intensity * pow(glm::dot(point.normal, resultant), shininess_);
 
     //! Diffuse phong
-    diffuse_phong = Shader::IdentifyColor(point) * diffuse_ * point.light_intensity * angle;
+    diffuse_phong = diffuse_ * point.light_intensity * angle;
 
-    return diffuse_phong + specular_phong;
+    shader_info.color = (diffuse_phong + ambient_) * Shader::IdentifyColor(point).color + specular_phong;
+    shader_info.glossiness = glossiness_;
+    shader_info.transparency = transparency_;
+    shader_info.refractive_index = refractive_index_;
+    return shader_info;
 }
 
 
@@ -62,4 +71,14 @@ float acgm::PhongShader::GetDiffuse()
 float acgm::PhongShader::GetSpecular()
 {
     return specular_;
+}
+
+float acgm::PhongShader::GetGlossiness()
+{
+    return glossiness_;
+}
+
+float acgm::PhongShader::GetRefractiveIndex()
+{
+    return refractive_index_;
 }

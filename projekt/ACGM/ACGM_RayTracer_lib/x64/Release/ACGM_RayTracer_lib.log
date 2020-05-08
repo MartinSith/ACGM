@@ -1,4 +1,8 @@
 ﻿  Scene.cpp
-C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(27,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(32,33): warning C4018: '<': signed/unsigned mismatch
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(225,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(230,33): warning C4018: '<': signed/unsigned mismatch
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(238,27): warning C4101: 'ref_index': unreferenced local variable
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(237,24): warning C4101: 'reflection_hit_count': unreferenced local variable
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(237,19): warning C4101: 'min': unreferenced local variable
+C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\src\Scene.cpp(239,21): warning C4101: 'reflection_hit': unreferenced local variable
   ACGM_RayTracer_lib.vcxproj -> C:\Users\sithm\Desktop\final_ACGM\ACGM\x64\Release\ACGM_RayTracer_lib.lib

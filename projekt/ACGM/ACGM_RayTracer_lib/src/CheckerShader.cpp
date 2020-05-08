@@ -7,7 +7,7 @@ acgm::CheckerShader::CheckerShader(float cube_size, const std::shared_ptr<Shader
 }
 
 //! Functions
-cogs::Color3f acgm::CheckerShader::IdentifyColor(const ShaderStruct& point) const
+acgm::ShaderReturn acgm::CheckerShader::IdentifyColor(const ShaderStruct& point) const
 {
 	int32_t get_shader;
 	extern float bias;

@@ -13,7 +13,7 @@ namespace acgm
   {
   public:
     //! Constructors
-    Scene(const std::shared_ptr<acgm::Camera>& camera, const std::shared_ptr<acgm::Light>& light, const std::vector<std::shared_ptr<acgm::Model>>& models);
+    Scene(const std::shared_ptr<acgm::Camera>& camera, const std::shared_ptr<acgm::Light>& light, const std::vector<std::shared_ptr<acgm::Model>>& models, glm::vec3 enviro_up, glm::vec3 enviro_seam, std::string enviro_image_file, float bias, float index_of_refraction);
     ~Scene() = default;
 
     //! Functions
@@ -24,5 +24,10 @@ namespace acgm
       std::shared_ptr<acgm::Camera> camera_;
       std::shared_ptr<acgm::Light> light_;
       std::vector<std::shared_ptr<acgm::Model>> models_;
+      glm::vec3 enviro_up_;
+      glm::vec3 enviro_seam_;
+      std::string enviro_image_file_;
+      float bias_;
+      float index_of_refraction_;
   };
 }

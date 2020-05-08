@@ -11,21 +11,26 @@ namespace acgm
     {
     public:
         //! Constructors
-        explicit PhongShader(cogs::Color3f color, float shininess, float ambient, float diffuse, float specular);
+        explicit PhongShader(cogs::Color3f color, float shininess, float ambient, float diffuse, float specular, float glossiness, float transparency, float refractive_index);
 
         //! Functions
-        virtual cogs::Color3f IdentifyColor(const ShaderStruct& point) const override;
+        virtual acgm::ShaderReturn IdentifyColor(const ShaderStruct& point) const override;
 
         //! Getters
         float GetShininess();
         float GetAmbient();
         float GetDiffuse();
         float GetSpecular();
+        float GetGlossiness(); 
+        float GetRefractiveIndex();
 
     private:
         float shininess_;
         float ambient_;
         float diffuse_;
         float specular_;
+        float glossiness_;
+        float transparency_;
+        float refractive_index_;
     };
 }

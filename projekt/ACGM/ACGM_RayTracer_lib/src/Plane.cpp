@@ -21,7 +21,14 @@ std::optional<acgm::HitResult> acgm::Plane::Intersect(std::shared_ptr<acgm::Ray>
 
     //! Attributes of hit result
     hitresult.distance = glm::dot((plane_point_ - ray->GetOrigin()), plane_normal_) / dot_product;
-    hitresult.normal = plane_normal_;
+    if (dot_product > 0)
+    {
+        hitresult.normal = -plane_normal_;
+    }
+    else
+    {
+        hitresult.normal = plane_normal_;
+    }
     hitresult.point = ray->GetPoint(hitresult.distance) + (hitresult.normal * ray->GetBias());;
 
     return hitresult;

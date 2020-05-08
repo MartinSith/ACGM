@@ -14,6 +14,14 @@ namespace acgm
         bool is_in_shadow;
     };
 
+    struct ShaderReturn
+    {
+        cogs::Color3f color;
+        float glossiness;
+        float transparency;
+        float refractive_index;
+    };
+
     //! Representation of a shader
     class Shader
     {
@@ -24,7 +32,7 @@ namespace acgm
         explicit Shader(cogs::Color3f color);
 
         //! Functions
-        virtual cogs::Color3f IdentifyColor(const ShaderStruct& point) const;
+        virtual acgm::ShaderReturn IdentifyColor(const ShaderStruct& point) const;
 
     private:
         cogs::Color3f color_;

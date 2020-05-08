@@ -82,6 +82,9 @@
     <ClInclude Include="include\ACGM_RayTracer_lib\Triangle.h">
       <Filter>Public Source Files\Models</Filter>
     </ClInclude>
+    <ClInclude Include="include\ACGM_RayTracer_lib\Image.h">
+      <Filter>Public Source Files\Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Scene.cpp">
@@ -130,6 +133,9 @@
       <Filter>Private Source Files\Models</Filter>
     </ClCompile>
     <ClCompile Include="src\Triangle.cpp">
+      <Filter>Private Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Image.cpp">
       <Filter>Private Source Files\Models</Filter>
     </ClCompile>
   </ItemGroup>
