@@ -14,6 +14,7 @@ namespace acgm
         ~Mesh() = default;
 
         //! Functions
+        // function returning information about intersection with ray in parameter
         virtual std::optional<acgm::HitResult> Intersect(std::shared_ptr<acgm::Ray>& ray) const override;
        
     private:

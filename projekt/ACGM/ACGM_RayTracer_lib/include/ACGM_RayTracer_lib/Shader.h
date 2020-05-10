@@ -4,6 +4,7 @@
 
 namespace acgm
 {
+    // structure for information about intersection point
     struct ShaderStruct
     {
         glm::vec3 point;
@@ -14,6 +15,7 @@ namespace acgm
         bool is_in_shadow;
     };
 
+    // structure for information related to color of shader
     struct ShaderReturn
     {
         cogs::Color3f color;
@@ -32,6 +34,7 @@ namespace acgm
         explicit Shader(cogs::Color3f color);
 
         //! Functions
+        // function returning information related do color at point in parameter
         virtual acgm::ShaderReturn IdentifyColor(const ShaderStruct& point) const;
 
     private:

@@ -23,8 +23,8 @@ acgm::ShaderReturn acgm::PhongShader::IdentifyColor(const ShaderStruct& point) c
     glm::vec3 resultant;
     float normal_size, direction_to_light_size, angle;
 
-    normal_size = sqrt(pow(point.normal.x, 2) + pow(point.normal.y, 2) + pow(point.normal.z, 2));
-    direction_to_light_size = sqrt(pow(point.direction_to_light.x, 2) + pow(point.direction_to_light.y, 2) + pow(point.direction_to_light.z, 2));
+    normal_size = sqrt((point.normal.x * point.normal.x) + (point.normal.y * point.normal.y) + (point.normal.z * point.normal.z));
+    direction_to_light_size = sqrt((point.direction_to_light.x * point.direction_to_light.x) + (point.direction_to_light.y * point.direction_to_light.y) + (point.direction_to_light.z * point.direction_to_light.z));
     angle = glm::dot(point.normal, point.direction_to_light) / (direction_to_light_size * normal_size);
 
     //! Ambient phong

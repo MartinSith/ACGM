@@ -26,7 +26,7 @@ namespace acgm
 
         SceneImporter() = default;
         ~SceneImporter() = default;
-        bool Import(const std::string &filename);
+        bool Import(const std::string &filename, int reflection_number, int transparency_number);
         std::shared_ptr<acgm::Scene> GetScene() const;
         RenderOptions GetRenderOptions() const;
 
@@ -46,7 +46,7 @@ namespace acgm
         std::vector<std::shared_ptr<Model>> ReadModels();
         std::shared_ptr<Shader> ReadShader();
         std::shared_ptr<Light> ReadLight();
-        std::shared_ptr<Scene> ReadScene();
+        std::shared_ptr<Scene> ReadScene(int reflection_number, int transparency_number);
     };
 
 }

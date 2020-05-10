@@ -10,7 +10,7 @@ namespace acgm
       //! Constructors
       explicit Ray(glm::vec3 orig, glm::vec3 direct, const float bias);
 
-      //! Getters
+      //! Getters for private variables
       glm::vec3 GetOrigin();
       glm::vec3 GetDirection();
       glm::vec3 GetPoint(const float t);

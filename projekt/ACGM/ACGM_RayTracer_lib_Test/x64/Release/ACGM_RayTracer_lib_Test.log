@@ -1,51 +1,7 @@
-﻿  pch.cpp
-  IntersectionTests.cpp
-  LightsTests.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(204,33): warning C4244: 'argument': conversion from '_Ty' to 'const float', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1485): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,double,glm::vec<3,float,glm::packed_highp>,glm::vec<3,float,glm::packed_highp>>(_Ty &,double &&,glm::vec<3,float,glm::packed_highp> &&,glm::vec<3,float,glm::packed_highp> &&) noexcept(false)' being compiled
-          with
-          [
-              _Ty=acgm::SunLight
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1583): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<double,glm::vec<3,float,glm::packed_highp>,glm::vec<3,float,glm::packed_highp>>(double &&,glm::vec<3,float,glm::packed_highp> &&,glm::vec<3,float,glm::packed_highp> &&)' being compiled
-          with
-          [
-              _Ty=acgm::SunLight
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1584): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<double,glm::vec<3,float,glm::packed_highp>,glm::vec<3,float,glm::packed_highp>>(double &&,glm::vec<3,float,glm::packed_highp> &&,glm::vec<3,float,glm::packed_highp> &&)' being compiled
-          with
-          [
-              _Ty=acgm::SunLight
-          ]
-C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib_Test\LightsTests.cpp(6): message : see reference to function template instantiation 'std::shared_ptr<acgm::SunLight> std::make_shared<acgm::SunLight,double,glm::vec3,glm::vec3>(double &&,glm::vec3 &&,glm::vec3 &&)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(204,33): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
-          with
-          [
-              _Ty=int
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1485): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,int,glm::vec<3,float,glm::packed_highp>,int,int,int>(_Ty &,int &&,glm::vec<3,float,glm::packed_highp> &&,int &&,int &&,int &&) noexcept(false)' being compiled
-          with
-          [
-              _Ty=acgm::PointLight
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1583): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<int,glm::vec<3,float,glm::packed_highp>,int,int,int>(int &&,glm::vec<3,float,glm::packed_highp> &&,int &&,int &&,int &&)' being compiled
-          with
-          [
-              _Ty=acgm::PointLight
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1584): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<int,glm::vec<3,float,glm::packed_highp>,int,int,int>(int &&,glm::vec<3,float,glm::packed_highp> &&,int &&,int &&,int &&)' being compiled
-          with
-          [
-              _Ty=acgm::PointLight
-          ]
-C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib_Test\LightsTests.cpp(18): message : see reference to function template instantiation 'std::shared_ptr<acgm::PointLight> std::make_shared<acgm::PointLight,int,glm::vec3,int,int,int>(int &&,glm::vec3 &&,int &&,int &&,int &&)' being compiled
-  ShadersTests.cpp
+﻿  ReflectionTests.cpp
+  TransparencyTests.cpp
   Generating Code...
-  ACGM_RayTracer_lib.lib(PointLight.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+  ACGM_RayTracer_lib.lib(Image.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
   Generating code
   Finished generating code
   ACGM_RayTracer_lib_Test.vcxproj -> C:\Users\sithm\Desktop\final_ACGM\ACGM\x64\Release\ACGM_RayTracer_lib_Test.exe

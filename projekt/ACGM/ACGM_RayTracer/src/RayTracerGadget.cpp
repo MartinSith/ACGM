@@ -24,25 +24,28 @@ void RayTracerGadget::GenerateGui(hiro::GuiGenerator& gui)
     hiro::gui::Droplist* transparency_number_;
     hiro::gui::Button* scene_button_;
     scene_selector_ = gui.AddDroplist("Scene File")
-        ->AddItemsIndexed({ "scene0.txt", "scene1.txt", "scene2.txt", "scene3.txt", "scene4.txt", "scene5.txt", "scene6.txt" })
+        ->AddItemsIndexed({ "scene0.txt", "scene1.txt", "scene2.txt", "scene3.txt", "scene4.txt", "scene5.txt", "scene6.txt", "scene7.txt", "scene8.txt" })
         ->Set(0);
 
-    reflection_number_ = gui.AddDroplist("Reflection index")
-        ->AddItemsIndexed({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" })
-        ->Set(9);
+    reflection_number_ = gui.AddDroplist("Max reflection hits")
+        ->AddItemsIndexed({ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" })
+        ->Set(10);
 
-    transparency_number_ = gui.AddDroplist("Transparency index")
-        ->AddItemsIndexed({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" })
-        ->Set(9);
+    transparency_number_ = gui.AddDroplist("Max transparency hits")
+        ->AddItemsIndexed({ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" })
+        ->Set(10);
 
     scene_button_ = gui.AddButton("Import and Render");
-    scene_button_->Subscribe([scene_selector_](const hiro::gui::Button* button) {
+    scene_button_->Subscribe([scene_selector_, reflection_number_, transparency_number_](const hiro::gui::Button* button) {
         std::string file_name = scene_selector_->GetText();
-        ImportAndRender(file_name);
+        std::string reflection_number = reflection_number_->GetText();
+        std::string transparency_number = transparency_number_->GetText();
+
+        ImportAndRender(file_name, stoi(reflection_number), stoi(transparency_number));
     });
 }
 
-void RayTracerGadget::ImportAndRender(std::string fileName)
+void RayTracerGadget::ImportAndRender(std::string fileName, int reflection_number, int transparency_number)
 {
     bool importCheck;
     acgm::SceneImporter SceneImporter;
@@ -50,7 +53,7 @@ void RayTracerGadget::ImportAndRender(std::string fileName)
     std::shared_ptr<acgm::Scene> scene;
 
     //! Import scene from file
-    importCheck = SceneImporter.Import(fileName);
+    importCheck = SceneImporter.Import(fileName, reflection_number, transparency_number);
     result = SceneImporter.GetRenderOptions();
     scene = SceneImporter.GetScene();
 

@@ -13,9 +13,10 @@ namespace acgm
       virtual ~Plane() = default;
 
       //! Functions
+      // function returning information about intersection with ray in parameter
       virtual std::optional<acgm::HitResult> Intersect(std::shared_ptr<acgm::Ray>& ray) const override;
 
-      //! Getters
+      //! Getters for private variable
       glm::vec3 GetPlanePoint();
       glm::vec3 GetPlaneNormal();
 

@@ -1,11 +1,9 @@
 #include <ACGM_RayTracer_lib/SceneImporter.h>
 #include <Utils/Dialogs.h>
 
-//#include <ACGM_RayTracer_lib/Model.h>
 #include <ACGM_RayTracer_lib/Plane.h>
 #include <ACGM_RayTracer_lib/Sphere.h>
 #include <ACGM_RayTracer_lib/Mesh.h>
-//#include <ACGM_RayTracer_lib/Image.h>
 #include <ACGM_RayTracer_lib/Shader.h>
 #include <ACGM_RayTracer_lib/PhongShader.h>
 #include <ACGM_RayTracer_lib/CheckerShader.h>
@@ -13,7 +11,6 @@
 #include <ACGM_RayTracer_lib/PointLight.h>
 #include <ACGM_RayTracer_lib/SpotLight.h>
 #include <ACGM_RayTracer_lib/SunLight.h>
-
 
 const int acgm::SceneImporter::MODELTYPE_PLANE = 20;
 const int acgm::SceneImporter::MODELTYPE_SPHERE = 21;
@@ -43,7 +40,7 @@ std::string& trim(std::string& str, const std::string& chars = " ")
     return ltrim(rtrim(str, chars), chars);
 }
 
-bool acgm::SceneImporter::Import(const std::string &filename)
+bool acgm::SceneImporter::Import(const std::string& filename, int reflection_number, int transparency_number)
 {
     stream_.open(filename);
     if (!stream_.good())
@@ -54,7 +51,7 @@ bool acgm::SceneImporter::Import(const std::string &filename)
     }
 
     render_options_ = ReadRenderOptions();
-    scene_ = ReadScene();
+    scene_ = ReadScene(reflection_number, transparency_number);
 
     stream_.close();
     return true;
@@ -196,9 +193,9 @@ std::shared_ptr<acgm::Shader> acgm::SceneImporter::ReadShader()
         const auto ambient = ReadFloat();
         const auto diffuse = ReadFloat();
         const auto specular = ReadFloat();
-        const auto glossiness = ReadFloat(); // #UNLOCKED at Reflection seminar
-        const auto transparency = ReadFloat(); // #UNLOCKED at Transparency seminar
-        const auto refractive_index = ReadFloat(); // #UNLOCKED at Transparency seminar
+        const auto glossiness = ReadFloat();
+        const auto transparency = ReadFloat();
+        const auto refractive_index = ReadFloat();
         GetLine();
 
         // shader = #TODO new instance of PhongShader object
@@ -258,22 +255,20 @@ std::shared_ptr<acgm::Light> acgm::SceneImporter::ReadLight()
     return light;
 }
 
-std::shared_ptr<acgm::Scene> acgm::SceneImporter::ReadScene()
+std::shared_ptr<acgm::Scene> acgm::SceneImporter::ReadScene(int reflection_number, int transparency_number)
 {
     const auto bias = ReadFloat();
-    const auto index_of_refraction = ReadFloat(); // #UNLOCKED at Transparency seminar
-    const auto enviro_up = ReadVec3();            // #UNLOCKED at Environment seminar
-    const auto enviro_seam = ReadVec3();          // #UNLOCKED at Environment seminar
-    auto enviro_image_file = GetLine();           // #UNLOCKED at Environment seminar
-    std::cout << "Pred Trim: '" << enviro_image_file << "'" << std::endl;
-    std_ext::Trim(enviro_image_file);
-    std::cout << "Po Trim: '" << enviro_image_file << "'" << std::endl;
+    const auto index_of_refraction = ReadFloat();
+    const auto enviro_up = ReadVec3();
+    const auto enviro_seam = ReadVec3();
+    auto enviro_image_file = GetLine();
+    trim(enviro_image_file);
     const auto camera = ReadCamera();
     const auto light = ReadLight();
     const auto models = ReadModels();
 
     // #TODO Create your scene object and set imported camera, light and models to it
-    std::shared_ptr<acgm::Scene> scene = std::make_shared<acgm::Scene>(camera, light, models, enviro_up, enviro_seam, enviro_image_file, bias, index_of_refraction);
+    std::shared_ptr<acgm::Scene> scene = std::make_shared<acgm::Scene>(camera, light, models, enviro_up, enviro_seam, enviro_image_file, bias, index_of_refraction, reflection_number, transparency_number);
 
     return scene;
 }

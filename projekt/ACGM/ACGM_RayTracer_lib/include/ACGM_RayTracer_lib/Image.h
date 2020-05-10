@@ -1,5 +1,4 @@
 #pragma once
-#include <Utils/Dialogs.h>
 #include <glm/glm.hpp>
 #include <COGS/Color.h>
 
@@ -13,6 +12,11 @@ namespace acgm
         explicit Image(const std::string file_path);
         virtual ~Image() = default;
 
+        //! Functions
+        // function for image free
+        void FreeImageData();
+
+        // function returning color at point in parameter
         cogs::Color3f GetColorAt(const glm::vec2& uvs) const;
 
     private:

@@ -29,7 +29,7 @@ std::optional<acgm::HitResult> acgm::Plane::Intersect(std::shared_ptr<acgm::Ray>
     {
         hitresult.normal = plane_normal_;
     }
-    hitresult.point = ray->GetPoint(hitresult.distance) + (hitresult.normal * ray->GetBias());;
+    hitresult.point = ray->GetPoint(hitresult.distance);
 
     return hitresult;
 }

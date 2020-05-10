@@ -44,6 +44,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EnvironmentsTests.cpp" />
     <ClCompile Include="IntersectionTests.cpp" />
     <ClCompile Include="LightsTests.cpp" />
     <ClCompile Include="pch.cpp">
@@ -52,7 +53,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ReflectionTests.cpp" />
     <ClCompile Include="ShadersTests.cpp" />
+    <ClCompile Include="TransparencyTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ACGM_RayTracer_lib\ACGM_RayTracer_lib.vcxproj">

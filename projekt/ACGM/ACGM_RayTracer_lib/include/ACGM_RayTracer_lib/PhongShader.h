@@ -14,9 +14,10 @@ namespace acgm
         explicit PhongShader(cogs::Color3f color, float shininess, float ambient, float diffuse, float specular, float glossiness, float transparency, float refractive_index);
 
         //! Functions
+        // function returning information related do color at point in parameter
         virtual acgm::ShaderReturn IdentifyColor(const ShaderStruct& point) const override;
 
-        //! Getters
+        //! Getters for private variables
         float GetShininess();
         float GetAmbient();
         float GetDiffuse();

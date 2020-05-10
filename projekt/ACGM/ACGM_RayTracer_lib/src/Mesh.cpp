@@ -40,8 +40,8 @@ std::optional<acgm::HitResult> acgm::Mesh::Intersect(std::shared_ptr<acgm::Ray>&
     point_Y = mesh_.faces->GetFaces()[troj].y;
     point_Z = mesh_.faces->GetFaces()[troj].z;
 
-    min_hit->normal = glm::cross(mesh_.points->GetPositions()[point_Y] - mesh_.points->GetPositions()[point_X], mesh_.points->GetPositions()[point_Z] - mesh_.points->GetPositions()[point_X]);
-    min_hit->point = ray->GetPoint(min_hit->distance) + (min_hit->normal * ray->GetBias());
+    min_hit->normal = glm::normalize(glm::cross(mesh_.points->GetPositions()[point_Y] - mesh_.points->GetPositions()[point_X], mesh_.points->GetPositions()[point_Z] - mesh_.points->GetPositions()[point_X]));
+    min_hit->point = ray->GetPoint(min_hit->distance);
 
     return min_hit;
 }

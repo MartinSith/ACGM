@@ -14,6 +14,7 @@ namespace acgm
         virtual ~Triangle() = default;
 
         //! Functions
+        // function returning information about intersection with ray in parameter
         float Intersect(std::shared_ptr<acgm::Ray> ray) const;
 
     private:

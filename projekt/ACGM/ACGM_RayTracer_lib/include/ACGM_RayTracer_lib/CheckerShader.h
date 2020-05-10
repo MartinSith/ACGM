@@ -2,7 +2,7 @@
 //#include <glm/glm.hpp>
 //#include <ACGM_RayTracer_lib\PhongShader.h>
 
-#include <ACGM_RayTracer_lib\Shader.h>
+#include <ACGM_RayTracer_lib/Shader.h>
 
 namespace acgm
 {
@@ -14,9 +14,10 @@ namespace acgm
         explicit CheckerShader(float cube_size, const std::shared_ptr<Shader> shader0, const std::shared_ptr<Shader> shader1);
 
         //! Functions
+        // function returning information related do color at point in parameter
         virtual acgm::ShaderReturn IdentifyColor(const ShaderStruct& point) const override;
 
-        //! Getters
+        //! Getters for private variables
         float GetCubeSize();
 
     private:

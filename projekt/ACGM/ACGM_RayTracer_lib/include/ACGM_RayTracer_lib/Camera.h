@@ -10,7 +10,7 @@ namespace acgm
     //! Constructors
     Camera(const glm::vec3 &position, const glm::vec3& up_direction, const glm::vec3& forward_direction, const float z_near, const float z_far, const float fov_y_rad);
 
-    //! Getters
+    //! Getters for private variables
     glm::vec3 GetPosition() const;
     glm::vec3 GetUpDirection() const;    
     glm::vec3 GetForwardDirection() const;

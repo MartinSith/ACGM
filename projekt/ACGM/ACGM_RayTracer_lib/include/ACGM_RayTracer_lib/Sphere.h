@@ -11,9 +11,10 @@ namespace acgm
         virtual ~Sphere() = default;
     
         //! Functions
+        // function returning information about intersection with ray in parameter
         virtual std::optional<HitResult> Intersect(std::shared_ptr<acgm::Ray>& ray) const override;
 
-        //! Getters
+        //! Getters for private variables
         const glm::vec3 &GetPosition() const;
         float GetRadius() const;
 

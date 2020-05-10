@@ -1,5 +1,5 @@
 #pragma once
-#include <Utils/Dialogs.h>
+#include <optional>
 #include <ACGM_RayTracer_lib/Ray.h>
 #include <ACGM_RayTracer_lib/Shader.h>
 
@@ -20,12 +20,13 @@ namespace acgm
     virtual ~Model() = default;
 
     //! Functions
+    // function returning information about intersection with ray in parameter
     virtual std::optional<acgm::HitResult> Intersect(std::shared_ptr<acgm::Ray>& ray) const;
 
-    //! Setters
+    //! Setters for private variables
     void SetShader(const std::shared_ptr<acgm::Shader> shader);
 
-    //! Getters
+    //! Getters for private variables
     std::string GetName();
     std::shared_ptr<acgm::Shader> GetShader() const;
 
