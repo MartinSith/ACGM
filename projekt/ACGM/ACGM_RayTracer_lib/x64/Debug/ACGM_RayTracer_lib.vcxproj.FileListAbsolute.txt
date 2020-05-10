@@ -1,3 +1,0 @@
-C:\Users\sithm\Desktop\final_ACGM\ACGM\x64\Debug\ACGM_RayTracer_lib.pdb
-C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\x64\Debug\ACGM_RayTracer_lib.vcxproj.CopyComplete
-C:\Users\sithm\Desktop\final_ACGM\ACGM\ACGM_RayTracer_lib\x64\Debug\ACGM_RayTracer_lib.pdb
